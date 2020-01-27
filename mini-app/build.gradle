@@ -1,0 +1,47 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.2.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+}
+
+group = 'com.demo'
+version = '0.0.1-SNAPSHOT'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('azureVersion', "2.2.0")
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'com.microsoft.azure:azure-keyvault-secrets-spring-boot-starter'
+	implementation group: 'org.springframework.security', name: 'spring-security-jwt', version: '1.1.0.RELEASE'
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
+	implementation 'com.h2database:h2'
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+//	implementation group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.4.0.RELEASE'
+//	implementation 'com.auth0:java-jwt:3.4.0'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "com.microsoft.azure:azure-spring-boot-bom:${azureVersion}"
+	}
+}

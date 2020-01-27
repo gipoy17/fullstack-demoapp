@@ -1,0 +1,14 @@
+--DROP TABLE IF EXISTS user_account;
+--
+--CREATE TABLE user_account (
+--  id INT AUTO_INCREMENT  PRIMARY KEY,
+--  first_name VARCHAR(45) NOT NULL,
+--  last_name VARCHAR(45) NOT NULL,
+--  username VARCHAR(15) NOT NULL,
+--  password VARCHAR(250) NOT NULL,
+--  role VARCHAR(25) NOT NULL
+--  createdBy VARCHAR(15) NOT NULL,
+--  updatedBy VARCHAR(15) NULL,
+--  createdDateTime DATETIME NOT NULL,
+--  updatedDateTime DATETIME NULL,
+--);
